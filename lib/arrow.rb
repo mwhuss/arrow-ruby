@@ -12,12 +12,12 @@ module Arrow
       RestClient.post("#{self.server_url}/notifications", params.to_json, content_type: :json)
     end
   
-    def broadcast_push(token_addresses, notif)
+    def broadcast_push(token_addresses, notification)
       params = {
         notification: notification.to_hash,
         token_addresses: token_addresses
       }
-      RestClient.post("#{self.server_url}/broadcast_notifications", params.to_json, content_type: :json)
+      RestClient.post("#{self.server_url}/batch_notifications", params.to_json, content_type: :json)
     end
   
     def feedback(app_uuid)
