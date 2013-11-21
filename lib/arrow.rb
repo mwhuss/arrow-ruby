@@ -21,7 +21,8 @@ module Arrow
     end
   
     def feedback(app_uuid)
-      RestClient.get("#{self.server_url}/feedback/#{app_uuid}")
+      response = RestClient.get("#{self.server_url}/feedback/#{app_uuid}")
+      JSON.parse(response)
     end
   
     def server_url
